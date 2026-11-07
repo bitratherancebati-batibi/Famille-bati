@@ -256,6 +256,16 @@ footer strong{color:var(--or)}
   <br>
   <p>© 2026 FAMILLE BATI - Tous droits réservés.</p>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+const SUPABASE_URL = "https://rdwgqgmjoyaivynqtxae.supabase.co/rest/v1/";
+const SUPABASE_KEY = "sb_publishable_Xwu9SX-Q37KlF9pzooo0Xw_i2Tvj-fK";
+
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+  </script>
 </body>
 </html>
