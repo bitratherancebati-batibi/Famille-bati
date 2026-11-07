@@ -267,5 +267,95 @@ const supabase = window.supabase.createClient(
   SUPABASE_KEY
 );
   </script>
-</body>
+<style>
+#admin-access {
+  background: #d4af37;
+  color: #111;
+  border: 0;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 15px;
+}
+#admin-login {
+  display: none;
+  max-width: 350px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #1a1a1a;
+  color: white;
+  border: 1px solid #d4af37;
+  border-radius: 12px;
+}
+#admin-login input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+}
+#admin-login button {
+  background: #d4af37;
+  padding: 12px;
+  border: 0;
+  width: 100%;
+  font-weight: bold;
+}
+</style>
+
+<button id="admin-access">ESPACE ADMINISTRATEUR</button>
+
+<div id="admin-login">
+  <h3>Connexion administrateur</h3>
+  <form id="admin-form">
+    <input id="admin-email" type="email"
+      placeholder="Adresse e-mail" required>
+    <input id="admin-password" type="password"
+      placeholder="Mot de passe" required>
+    <button type="submit">SE CONNECTER</button>
+  </form>
+  <p id="admin-message"></p>
+</div>
+
+<script>
+document.getElementById("admin-access").onclick = function() {
+  const box = document.getElementById("admin-login");
+  box.style.display = box.style.display === "block" ? "none" : "block";
+};
+
+document.getElementById("admin-form").onsubmit = async function(e) {
+  e.preventDefault();
+
+  const message = document.getElementById("admin-message");
+  message.textContent = "Vérification en cours...";
+
+  const email = document.getElementById("admin-email").value;
+  const password = document.getElementById("admin-password").value;
+
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+    message.textContent = "Identifiants incorrects.";
+    return;
+  }
+
+  const { data: profile, error: profileError } = await supabase
+    .from("profiles")
+    .select("role,status")
+    .eq("id", data.user.id)
+    .single();
+
+  if (profileError || profile.role !== "admin" ||
+      profile.status !== "approved") {
+    await supabase.auth.signOut();
+    message.textContent = "Accès administrateur refusé.";
+    return;
+  }
+
+  message.textContent = "Connexion administrateur réussie !";
+};
+  </script></body>
 </html>
