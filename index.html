@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111111">
+<meta name="description" content="FAMILLE BATI : unité, solidarité et famille. Bienvenue sur notre plateforme officielle.">
+<title>FAMILLE BATI - Officiel</title>
+
+<style>
+:root {
+  --or:#d4af37;
+  --noir:#111111;
+  --fond:#191919;
+  --blanc:#ffffff;
+  --gris:#aaaaaa;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,sans-serif;
+  background:var(--noir);
+  color:var(--blanc);
+  line-height:1.6;
+}
+header{
+  background:#080808;
+  padding:15px;
+  border-bottom:2px solid var(--or);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+nav{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.logo{
+  color:var(--or);
+  font-weight:bold;
+  font-size:21px;
+}
+nav a{
+  color:white;
+  text-decoration:none;
+  margin:5px 8px;
+  font-size:13px;
+}
+nav a:hover{color:var(--or)}
+.hero{
+  text-align:center;
+  padding:55px 18px;
+  background:linear-gradient(135deg,#111,#29200a,#111);
+}
+.hero img{
+  width:145px;
+  height:145px;
+  object-fit:contain;
+  border-radius:50%;
+  border:3px solid var(--or);
+  margin-bottom:18px;
+  background:#fff;
+}
+h1{
+  color:var(--or);
+  font-size:35px;
+  margin-bottom:10px;
+}
+.hero p{color:#eee}
+.slogan{
+  color:var(--or);
+  margin:12px 0 22px;
+  font-style:italic;
+}
+.btn{
+  display:inline-block;
+  padding:12px 22px;
+  background:var(--or);
+  color:#111;
+  font-weight:bold;
+  text-decoration:none;
+  border-radius:6px;
+  margin:6px;
+}
+section{
+  max-width:1050px;
+  margin:auto;
+  padding:45px 18px;
+}
+h2{
+  text-align:center;
+  color:var(--or);
+  margin-bottom:25px;
+  font-size:25px;
+}
+.card{
+  background:#202020;
+  border:1px solid #725d24;
+  border-radius:12px;
+  padding:22px;
+  margin-bottom:15px;
+}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+.card h3{color:var(--or);margin-bottom:10px}
+.card p{color:#ddd}
+.number{
+  font-size:26px;
+  font-weight:bold;
+  color:var(--or);
+}
+.center{text-align:center}
+.muted{color:var(--gris);font-size:13px}
+footer{
+  text-align:center;
+  padding:25px 15px;
+  background:#080808;
+  border-top:2px solid var(--or);
+  color:#ccc;
+}
+footer strong{color:var(--or)}
+@media(max-width:600px){
+  nav{justify-content:center}
+  nav a{font-size:12px;margin:4px}
+  h1{font-size:28px}
+  .hero{padding:40px 12px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+  <div class="logo">FAMILLE BATI</div>
+  <div>
+    <a href="#accueil">Accueil</a>
+    <a href="#famille">Famille</a>
+    <a href="#cotisations">Cotisations</a>
+    <a href="#finances">Finances</a>
+    <a href="#actualites">Actualités</a>
+  </div>
+</nav>
+</header>
+
+<div class="hero" id="accueil">
+  <img src="https://i.ibb.co/30z95h2/Designer.png" alt="Logo FAMILLE BATI">
+  <h1>FAMILLE BATI</h1>
+  <p class="slogan">Plus qu'un nom, une famille toujours unie.</p>
+  <p>Bienvenue sur notre plateforme officielle.</p>
+  <p>Un espace de rassemblement, de solidarité et de fraternité.</p>
+  <a href="#famille" class="btn">Découvrir notre famille</a>
+</div>
+
+<section id="famille">
+  <h2>QUI SOMMES-NOUS ?</h2>
+  <div class="card center">
+    <h3>Notre famille, notre force</h3>
+    <p>
+      FAMILLE BATI est un espace de rassemblement
+      pour renforcer les liens familiaux, encourager
+      l'entraide et construire un avenir meilleur ensemble.
+    </p>
+    <br>
+    <p><strong style="color:#d4af37">Unité • Solidarité • Respect</strong></p>
+  </div>
+</section>
+
+<section id="cotisations">
+  <h2>COTISATIONS FAMILIALES</h2>
+  <div class="cards">
+    <div class="card center">
+      <h3>Participation familiale</h3>
+      <div class="number">1 000 FCFA</div>
+      <p>Montant de la cotisation prévue.</p>
+      <br>
+      <a class="btn"
+      href="https://pay.wave.com/m/M_ci_kbrm5M4_zv8z/c/ci/"
+      target="_blank" rel="noopener">
+      Payer avec Wave
+      </a>
+    </div>
+    <div class="card">
+      <h3>Notre engagement</h3>
+      <p>
+        Chaque contribution aide à soutenir
+        les activités et les projets de notre famille.
+        Ensemble, nous sommes plus forts.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="finances">
+  <h2>TRANSPARENCE FINANCIÈRE</h2>
+  <div class="cards">
+    <div class="card center">
+      <h3>Total des cotisations</h3>
+      <div class="number">À actualiser</div>
+    </div>
+    <div class="card center">
+      <h3>Total des dépenses</h3>
+      <div class="number">À actualiser</div>
+    </div>
+    <div class="card center">
+      <h3>Solde disponible</h3>
+      <div class="number">À actualiser</div>
+    </div>
+  </div>
+  <p class="muted center">
+    Les responsables doivent actualiser les chiffres
+    avant toute publication.
+  </p>
+</section>
+
+<section id="membres">
+  <h2>ESPACE DES MEMBRES</h2>
+  <div class="card center">
+    <h3>La famille BATI, c'est nous !</h3>
+    <p>
+      Chaque membre compte. Notre force repose
+      sur la participation et l'union de tous.
+    </p>
+    <br>
+    <p>La liste officielle des membres sera publiée
+    après validation des responsables.</p>
+  </div>
+</section>
+
+<section id="actualites">
+  <h2>ACTUALITÉS DE LA FAMILLE</h2>
+  <div class="card center">
+    <h3>Bienvenue sur notre plateforme !</h3>
+    <p>
+      Retrouvez ici les informations, annonces,
+      rencontres et activités de FAMILLE BATI.
+    </p>
+    <br>
+    <p class="muted">Les nouvelles annonces seront ajoutées par les responsables.</p>
+  </div>
+</section>
+
+<footer>
+  <strong>FAMILLE BATI</strong>
+  <p>Plus qu'un nom, une famille toujours unie.</p>
+  <p>Unité • Solidarité • Famille</p>
+  <br>
+  <p>© 2026 FAMILLE BATI - Tous droits réservés.</p>
+</footer>
+
+</body>
+</html>
