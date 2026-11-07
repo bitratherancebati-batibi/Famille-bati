@@ -327,35 +327,53 @@ document.getElementById("admin-form").onsubmit = async function(e) {
   e.preventDefault();
 
   const message = document.getElementById("admin-message");
-  message.textContent = "Vérification en cours...";
+  const button = this.querySelector('button[type="submit"]');
 
-  const email = document.getElementById("admin-email").value;
+  const email = document.getElementById("admin-email").value.trim();
   const password = document.getElementById("admin-password").value;
 
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password
-  });
+  button.disabled = true;
+  button.textContent = "Connexion...";
+  message.textContent = "Connexion en cours...";
 
-  if (error) {
-    message.textContent = "Identifiants incorrects.";
-    return;
+  try {
+    const result = await Promise.race([
+      supabase.auth.signInWithPassword({ email, password }),
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("TIMEOUT")), 15000)
+      )
+    ]);
+
+    if (result.error) throw result.error;
+
+    const user = result.data.user;
+
+    const profileResult = await supabase
+      .from("profiles")
+      .select("role,status")
+      .eq("id", user.id)
+      .single();
+
+    if (profileResult.error) throw profileResult.error;
+
+    const profile = profileResult.data;
+
+    if (profile.role !== "admin" || profile.status !== "approved") {
+      await supabase.auth.signOut();
+      throw new Error("Accès administrateur refusé.");
+    }
+
+    message.textContent = "Connexion réussie !";
+  } catch (error) {
+    if (error.message === "TIMEOUT") {
+      message.textContent = "Connexion trop lente. Vérifie Internet et réessaie.";
+    } else {
+      message.textContent = error.message || "Erreur de connexion.";
+    }
+  } finally {
+    button.disabled = false;
+    button.textContent = "SE CONNECTER";
   }
-
-  const { data: profile, error: profileError } = await supabase
-    .from("profiles")
-    .select("role,status")
-    .eq("id", data.user.id)
-    .single();
-
-  if (profileError || profile.role !== "admin" ||
-      profile.status !== "approved") {
-    await supabase.auth.signOut();
-    message.textContent = "Accès administrateur refusé.";
-    return;
-  }
-
-  message.textContent = "Connexion administrateur réussie !";
 };
   </script></body>
 </html>
