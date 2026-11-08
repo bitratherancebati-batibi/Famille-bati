@@ -388,42 +388,4 @@
                         }
                     }
                 });
-                html += `</table>`;
-                if(count === 0) html = `<p>Aucun paiement validé pour l'instant.</p>`;
-                body.innerHTML = html;
-            } 
-            else if(type === 'expenses') {
-                title.innerText = "📉 Historique des Dépenses de la Caisse";
-                let html = `<table><tr><th>Date</th><th>Motif</th><th>Montant</th></tr>`;
-                if(appData.expenses.length === 0) {
-                    html = `<p>Aucune dépense enregistrée.</p>`;
-                } else {
-                    appData.expenses.forEach(e => {
-                        html += `<tr><td>${e.date}</td><td>${e.motif}</td><td>${Number(e.amount).toLocaleString()} FCFA</td></tr>`;
-                    });
-                    html += `</table>`;
-                }
-                body.innerHTML = html;
-            }
-            else if(type === 'members') {
-                title.innerText = "👥 Liste Officielle des Membres";
-                let html = `<ul>`;
-                if(appData.members.length === 0) {
-                    html = `<p>Aucun membre inscrit.</p>`;
-                } else {
-                    appData.members.forEach(m => {
-                        html += `<li style="padding: 8px 0; border-bottom: 1px solid #eee;">👤 ${m.name}</li>`;
-                    });
-                    html += `</ul>`;
-                }
-                body.innerHTML = html;
-            }
-
-            modal.style.display = 'flex';
-        }
-
-        // Charger l'application au démarrage
-        window.onload = renderApp;
-    </script>
-</body>
-</html>
+                html 
